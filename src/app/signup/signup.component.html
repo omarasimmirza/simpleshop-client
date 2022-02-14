@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet"
+/>
+<div>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-logo">
+        <h1 class="logo" (click)="home()">Shop at Paradigm</h1>
+      </div>
+    </div>
+  </header>
+</div>
+<html>
+  <body class="containerbg">
+    <div class="container" id="container">
+      <div class="form-container sign-in-container">
+        <form
+          #signupForm="ngForm"
+          id="sign_up_form"
+          (ngSubmit)="signupForm.valid && save(signupForm)"
+        >
+          <input
+            autocomplete="off"
+            type="text"
+            placeholder="Username"
+            ngModel
+            name="username"
+            id="username"
+            required
+          />
+          <input
+            autocomplete="off"
+            #password
+            type="password"
+            placeholder="Password"
+            ngModel
+            name="password"
+            id="password"
+            required
+          />
+          <input
+            autocomplete="off"
+            #confirmPassword
+            type="password"
+            placeholder="Confirm Password"
+            ngModel
+            name="confirmPassword"
+            id="confirmPassword"
+            required
+          />
+          <input
+            autocomplete="off"
+            type="text"
+            placeholder="First Name"
+            ngModel
+            name="firstName"
+            id="firstName"
+            required
+          />
+          <input
+            autocomplete="off"
+            type="text"
+            placeholder="Last Name"
+            ngModel
+            name="lastName"
+            id="lastName"
+            required
+          />
+          <input
+            autocomplete="off"
+            type="email"
+            placeholder="Email"
+            ngModel
+            name="email"
+            id="email"
+            required
+          />
+          <input
+            autocomplete="off"
+            type="text"
+            placeholder="Street Address"
+            ngModel
+            name="streetAddress"
+            id="streetAddress"
+            required
+          />
+          <input
+            autocomplete="off"
+            type="text"
+            placeholder="City"
+            ngModel
+            name="city"
+            id="city"
+            required
+          />
+          <input
+            autocomplete="off"
+            type="text"
+            placeholder="State"
+            ngModel
+            name="state"
+            id="state"
+            required
+          />
+          <input
+            autocomplete="off"
+            type="text"
+            placeholder="Zipcode"
+            ngModel
+            name="zipcode"
+            id="zipcode"
+            required
+          />
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-right">
+            <h1>Just fill this out and start shopping!</h1>
+            <p>Kindly fill out the relevant imformation.</p>
+            <button class="ghost" id="signUp" form="sign_up_form" type="submit">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

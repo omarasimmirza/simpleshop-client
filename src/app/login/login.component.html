@@ -1,0 +1,48 @@
+<header class="header">
+  <div class="header-content">
+    <div class="header-logo">
+      <h1 class="logo" routerLink="">Shop at Paradigm</h1>
+    </div>
+  </div>
+</header>
+<body class="containerbg">
+  <div class="container" id="container">
+    <div class="form-container sign-in-container">
+      <form #signinForm="ngForm" (ngSubmit)="loginCheck(signinForm)">
+        <h1>Sign in</h1>
+        <input
+          autocomplete="off"
+          style="font-family: 'Montserrat', sans-serif; font-size: 1rem;"
+          type="username"
+          placeholder="Username"
+          ngModel
+          name="username"
+          id="username"
+          required
+        />
+        <input
+          autocomplete="off"
+          style="font-family: 'Montserrat', sans-serif; font-size: 1rem;"
+          type="password"
+          placeholder="Password"
+          ngModel
+          name="password"
+          id="password"
+          required
+        />
+        <button style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem;" type="submit" [disabled]="signinForm.invalid" id="login">
+          Sign In
+        </button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Welcome to Paradigm!</h1>
+          <p>Enter your personal details and start your journey with us</p>
+          <button class="ghost" style="font-family: 'Montserrat', sans-serif;" id="signUp" (click)="signup()">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

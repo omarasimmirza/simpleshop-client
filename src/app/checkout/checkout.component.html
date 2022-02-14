@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet"
+/>
+<div>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-logo">
+        <h1 class="logo" (click)="home()">Shop at Paradigm</h1>
+      </div>
+      <div class="menu-bar">
+        <ul class="menu-list">
+          <div *ngIf="signedIn">
+            <li>
+              <i (click)="cart()" class="material-icons-outlined cart"
+                >shopping_cart</i
+              >
+            </li>
+            <li>
+              <i (click)="logout()" class="material-icons-outlined logout">logout</i>
+            </li>
+          </div>
+        </ul>
+      </div>
+      <nav class="header-navigation">
+        <div style="display: flex">
+          <a
+            (click)="cart()"
+            class="link-button"
+            style="background-color: rgb(173, 131, 25)"
+            >Your Cart<i class="material-icons-outlined">shopping_cart</i></a
+          >
+          <a (click)="logout()" class="link-button"
+            >Logout <i class="material-icons-outlined">logout</i></a
+          >
+        </div>
+      </nav>
+    </div>
+  </header>
+</div>
+<div class="container">
+  <div class="window">
+    <div class="order-info">
+      <div class="order-info-content">
+        <h2>Order Summary</h2>
+        <table class="order-table" *ngFor="let product of products">
+          <tbody>
+            <tr>
+              <td>
+                <img src="{{ product.disp_img }}" class="full-width" />
+              </td>
+              <td>
+                <div class="line"></div>
+                <br />
+                <span class="thin">{{ product.name }}</span> <br />
+                <span class="thin small">
+                  {{ product.department }}<br /><br
+                /></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="price">
+                  ${{ product.price }} x {{ product.items }}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="line"></div>
+        <div class="total">
+          <span style="float: left"> TOTAL </span>
+          <span class="price" style="float: right; text-align: right">
+            ${{ this.total }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="credit-info">
+      <div class="credit-info-content">
+        <form
+          #checkout="ngForm"
+          id="checkoutForm"
+          (ngSubmit)="checkout.valid && email(checkout)"
+        >
+          <img
+            src="https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png"
+            height="80"
+            class="credit-card-image"
+            id="credit-card-image"
+          />
+          Card Number
+          <input
+            autocomplete="off"
+            class="input-field"
+            type="text"
+            ngModel
+            name="cardNum"
+            required
+          />
+          Card Holder
+          <input
+            autocomplete="off"
+            class="input-field"
+            type="text"
+            ngModel
+            name="cardHolder"
+            required
+          />
+          <table class="half-input-table">
+            <tr>
+              <td>
+                Expires
+                <input
+                  class="input-field"
+                  type="date"
+                  ngModel
+                  name="expDate"
+                  required
+                />
+              </td>
+              <td>
+                CVC
+                <input
+                  autocomplete="off"
+                  class="input-field"
+                  type="text"
+                  ngModel
+                  name="cvcNum"
+                  required
+                />
+              </td>
+            </tr>
+          </table>
+          <img
+            class="credit-card-image"
+            src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-png-transparent-svg-vector-bie-supply-0.png"
+            alt="mastercard logo png transparent svg vector bie supply"
+          />
+          <button type="submit" class="pay-btn" form="checkoutForm">
+            Checkout
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

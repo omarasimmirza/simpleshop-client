@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet"
+/>
+<div>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-logo">
+        <h1 class="logo" (click)="home()">Shop at Paradigm</h1>
+      </div>
+      <div class="menu-bar">
+        <ul class="menu-list">
+          <div *ngIf="signedIn">
+            <li>
+              <i (click)="cart()" class="material-icons-outlined cart"
+                >shopping_cart</i
+              >
+            </li>
+            <li>
+              <i (click)="logout()" class="material-icons-outlined logout"
+                >logout</i
+              >
+            </li>
+          </div>
+          <div *ngIf="!signedIn">
+            <button (click)="login()" class="link-button">Login</button>
+          </div>
+        </ul>
+      </div>
+      <nav class="header-navigation">
+        <div *ngIf="signedIn" style="display: flex">
+          <a
+            (click)="cart()"
+            class="link-button"
+            style="background-color: rgb(173, 131, 25)"
+            >Your Cart<i class="material-icons-outlined">shopping_cart</i></a
+          >
+          <a (click)="logout()" class="link-button"
+            >Logout <i class="material-icons-outlined">logout</i></a
+          >
+        </div>
+        <div *ngIf="!signedIn">
+          <button (click)="login()" class="link-button">Login</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+</div>
+<html>
+  <body>
+    <div class="CartContainer">
+      <div class="Header">
+        <h3 class="Heading">Shopping Cart</h3>
+        <h5 class="Action" (click)="removeAll()">Remove all</h5>
+      </div>
+      <hr class="hr-resp" />
+      <div *ngFor="let product of products">
+        <div class="Cart-Items">
+          <div class="image-box" (click)="details(product.id)">
+            <img src="{{ product.disp_img }}" />
+          </div>
+          <div class="about">
+            <h1 class="title">{{ product.name }}</h1>
+          </div>
+          <div class="counter">
+            <div class="btn" (click)="addToCart(product.id, product.price)">
+              +
+            </div>
+            <div class="count">{{ product.items }}</div>
+            <div class="btn" (click)="deleteItem(product.id)">-</div>
+          </div>
+          <div class="prices">
+            <div class="amount">${{ product.price }}</div>
+            <div class="remove" (click)="remove(product.id)"><u>Remove</u></div>
+          </div>
+        </div>
+        <div>
+          <div class="Cart-Items-Resp">
+            <div class="about-resp">
+              <h1 class="title-resp">{{ product.name }}</h1>
+            </div>
+            <div class="image-box-resp" (click)="details(product.id)">
+              <img src="{{ product.disp_img }}" />
+            </div>
+            <div class="counter-resp">
+              <div
+                class="btn-resp"
+                (click)="addToCart(product.id, product.price)"
+              >
+                +
+              </div>
+              <div class="count-resp">{{ product.items }}</div>
+              <div class="btn-resp" (click)="deleteItem(product.id)">-</div>
+            </div>
+            <div class="prices-resp">
+              <div class="amount-resp">${{ product.price }}</div>
+              <div class="remove-resp" (click)="remove(product.id)">
+                <span class="material-icons-outlined">
+                  remove_circle_outline
+                </span>
+              </div>
+            </div>
+          </div>
+          <hr class="hr-resp" />
+        </div>
+      </div>
+      <hr class="hr-dp" />
+      <div class="checkout">
+        <div class="total">
+          <div>
+            <div class="Subtotal">Sub-Total</div>
+          </div>
+          <div class="total-amount">${{ this.total }}</div>
+        </div>
+        <button class="button" (click)="checkout()">Checkout</button>
+      </div>
+      <div class="checkout-resp">
+        <div class="total-resp">
+          <div>
+            <div class="Subtotal-resp">Sub-Total</div>
+          </div>
+          <div class="total-amount-resp">${{ this.total }}</div>
+        </div>
+        <button class="button-resp" (click)="checkout()">Checkout</button>
+      </div>
+    </div>
+  </body>
+</html>

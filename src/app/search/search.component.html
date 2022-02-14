@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet"
+/>
+<div>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-logo">
+        <h1 class="logo" (click)="home()">Shop at Paradigm</h1>
+      </div>
+      <div class="menu-bar">
+        <ul class="menu-list">
+          <div *ngIf="signedIn">
+            <li (click)="toggleSearch()">
+              <i class="material-icons-two-tone search-icon">search</i>
+            </li>
+            <li>
+              <i (click)="cart()" class="material-icons-outlined cart"
+                >shopping_cart</i
+              >
+            </li>
+            <li>
+              <i (click)="logout()" class="material-icons-outlined logout">logout</i>
+            </li>
+          </div>
+        </ul>
+      </div>
+      <nav class="header-navigation">
+        <a class="search-box">
+          <input
+            class="search-txt"
+            type="text"
+            name="searchWord"
+            #searchWord="ngModel"
+            ngModel
+            placeholder="Type to search"
+            (keyup.enter)="searchForProd($event, searchWord.value)"
+          />
+          <a class="search-btn">
+            <i class="material-icons-two-tone">search</i>
+          </a>
+        </a>
+        <div style="display: flex">
+          <a
+            (click)="cart()"
+            class="link-button"
+            style="background-color: rgb(173, 131, 25)"
+            >Your Cart<i class="material-icons-outlined">shopping_cart</i></a
+          >
+          <a (click)="logout()" class="link-button"
+            >Logout <i class="material-icons-outlined">logout</i></a
+          >
+        </div>
+      </nav>
+    </div>
+    <div class="center-search">
+      <input
+        id="input"
+        class="search-this"
+        type="text"
+        name="searchWord"
+        #searchWordResp="ngModel"
+        ngModel
+        (keyup.enter)="searchForProd($event, searchWordResp.value)"
+      />
+    </div>
+  </header>
+  <html>
+    <body class="containerbg">
+      <main>
+        <div class="responsive-container">
+          <div class="grid">
+            <div *ngFor="let product of products">
+              <div class="product" (click)="details(product.id)">
+                <div class="product-image">
+                  <img src="{{ product.disp_img }}" alt="image" />
+                </div>
+                <div class="product-content">
+                  <div class="product-info">
+                    <h2 class="product-title">{{ product.name }}</h2>
+                    <p class="product-price">${{ product.price }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </body>
+  </html>
+</div>

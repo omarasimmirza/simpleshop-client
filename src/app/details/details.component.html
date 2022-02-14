@@ -1,0 +1,97 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet"
+/>
+<div class="sticky">
+  <header class="header">
+    <div class="header-content">
+      <div class="header-logo">
+        <h1 class="logo" (click)="home()">Shop at Paradigm</h1>
+      </div>
+      <div class="menu-bar">
+        <ul class="menu-list">
+          <li (click)="toggleSearch()">
+            <i class="material-icons-two-tone search-icon">search</i>
+          </li>
+          <li>
+            <i (click)="cart()" class="material-icons-outlined cart"
+              >shopping_cart</i
+            >
+          </li>
+          <li>
+            <i (click)="logout()" class="material-icons-outlined logout"
+              >logout</i
+            >
+          </li>
+        </ul>
+      </div>
+      <nav class="header-navigation">
+        <a class="search-box">
+          <input
+            class="search-txt"
+            type="text"
+            name="searchWord"
+            #searchWord="ngModel"
+            ngModel
+            placeholder="Type to search"
+            (keyup.enter)="search($event, searchWord.value)"
+          />
+          <a class="search-btn">
+            <i class="material-icons-two-tone">search</i>
+          </a>
+        </a>
+        <a
+          (click)="cart()"
+          class="link-button"
+          style="background-color: #ad8319"
+          >Your Cart<i class="material-icons-outlined">shopping_cart</i></a
+        >
+        <a (click)="logout()" class="link-button"
+          >Logout <i class="material-icons-outlined">logout</i></a
+        >
+      </nav>
+    </div>
+    <div class="center-search">
+      <input
+        id="input"
+        class="search-this"
+        type="text"
+        name="searchWord"
+        #searchWordResp="ngModel"
+        ngModel
+        (keyup.enter)="search($event, searchWordResp.value)"
+      />
+    </div>
+  </header>
+  <html>
+    <body class="containerbg">
+      <main>
+        <div class="responsive-container">
+          <div class="grid">
+            <div class="product">
+              <div class="product-image">
+                <img [src]="imgUrl" alt="image" />
+              </div>
+              <div class="image-buttons">
+                <button class="right" (click)="next()">
+                  <i class="material-icons-outlined">arrow_forward_ios</i>
+                </button>
+                <button class="left" (click)="prev()">
+                  <i class="material-icons-outlined">arrow_back_ios</i>
+                </button>
+              </div>
+              <div class="product-content">
+                <div class="product-info">
+                  <h2 class="product-title">{{ product.name }}</h2>
+                  <p class="product-price">${{ product.price }}</p>
+                  <p class="product-price">{{ product.description }}</p>
+                </div>
+                <button class="btn" (click)="addToCart()">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </body>
+  </html>
+</div>
